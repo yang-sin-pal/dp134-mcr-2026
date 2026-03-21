@@ -1,0 +1,7 @@
+build/
+*.axf
+*.hex
+*.o
+*.d
+*.uvprojx
+*.uvoptx
