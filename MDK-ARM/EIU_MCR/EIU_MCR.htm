@@ -3,7 +3,7 @@
 <title>Static Call Graph - [EIU_MCR\EIU_MCR.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image EIU_MCR\EIU_MCR.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Sun Mar 22 00:47:36 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Sun Mar 22 03:22:34 2026
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -986,9 +986,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8b]"></a>get_sensor_mask</STRONG> (Thumb, 154 bytes, Stack size 0 bytes, adc.o(.text.get_sensor_mask))
-<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_crossline
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
+<BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_leftline
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_crossline
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;robot_high_speed
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;robot_init
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_handle
@@ -1138,9 +1138,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_crossline
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_leftline
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_crossline
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_with_gate_bar
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;robot_high_speed
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_sonic
@@ -1151,13 +1151,13 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop
 </UL>
 
-<P><STRONG><a name="[9f]"></a>robot_high_speed</STRONG> (Thumb, 8150 bytes, Stack size 40 bytes, robot.o(.text.robot_high_speed))
+<P><STRONG><a name="[9f]"></a>robot_high_speed</STRONG> (Thumb, 7626 bytes, Stack size 40 bytes, robot.o(.text.robot_high_speed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = robot_high_speed &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_crossline
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_leftline
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_brake2
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_crossline
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_brake
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_and_speed
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz

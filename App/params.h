@@ -15,15 +15,15 @@
 #define					MASK4_4					0xff    /* oooooooo	  11111111									*/
 
 #define ROBOT_SPEED 40               // TOC DO CUA XE
-#define ROBOT_HIGH_SPEED 65         // HIGH SPEED -> Advanced Functions
+#define ROBOT_HIGH_SPEED 70         // HIGH SPEED -> Advanced Functions
 #define TIME_TO_BOOST  100          //ms 
 #define TIME_AFTER_TURN_90 100     //ms 
 #define CHANGE_LANE_TIME   100     //ms
 #define CHANGE_LANE_FACTOR 0.35 
 // Percent of speed remains after change lane detection
 #define CROSS_LINE_FACTOR  0.35    // Percent of speed remains after cross line detection
-#define RIGHT_CHANGE_LANE_ANGLE -12
-#define LEFT_CHANGE_LANE_ANGLE  12
+#define RIGHT_CHANGE_LANE_ANGLE -7
+#define LEFT_CHANGE_LANE_ANGLE  7
 
 
 #define BRAKE_TIME 0   //ms
@@ -37,7 +37,7 @@
 #define BOSST_TIME_AFTER_CHANGE_LANE 100 // ms
 #define SPEED_AFTER_CHANGE_LANE  80 
 #define SPEED_AFTER_TURN_90 80 
-uint16_t calib_weight[8] = {400,350,340,330,330,330,385,250};  // HIEU CHINH GIA TRI CHO TUNG CAM BIEN
+uint16_t calib_weight[8] = {380,300,250,330,330,330,385,280};  // HIEU CHINH GIA TRI CHO TUNG CAM BIEN
 /////----------- Differential values -------------------//////
 const char coeffR1[50] = {
 	100,	98, 	96, 	94, 	93, 	91, 	90, 	88, 	86, 	85,	
