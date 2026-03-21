@@ -3,7 +3,7 @@
 <title>Static Call Graph - [EIU_MCR\EIU_MCR.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image EIU_MCR\EIU_MCR.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Sun Mar 22 03:22:34 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Sun Mar 22 03:57:15 2026
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -573,8 +573,8 @@ Global Symbols
 <P><STRONG><a name="[4f]"></a>HAL_GetTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f1xx_hal.o(.text.HAL_GetTick))
 <BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep_long
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_multi_handle
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sw_handle
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rgb_init
@@ -876,8 +876,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_white
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_black
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep_long
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_button
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rgb_setcolor
 </UL>
@@ -887,10 +887,10 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>calib_servo</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, calib.o(.text.calib_servo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = calib_servo &rArr; save_servo_center &rArr; flash_erease &rArr; HAL_FLASHEx_Erase &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_servo_center
+<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep_long
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_servo_center
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_servo_center
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep_long
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_button
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rgb_setcolor
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle
@@ -903,8 +903,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmple
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sonic_dist
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep_long
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rgb_setcolor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop
@@ -1151,7 +1151,7 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop
 </UL>
 
-<P><STRONG><a name="[9f]"></a>robot_high_speed</STRONG> (Thumb, 7626 bytes, Stack size 40 bytes, robot.o(.text.robot_high_speed))
+<P><STRONG><a name="[9f]"></a>robot_high_speed</STRONG> (Thumb, 7510 bytes, Stack size 40 bytes, robot.o(.text.robot_high_speed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = robot_high_speed &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d_check_rightline
@@ -1318,8 +1318,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_vcompare
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_vcompare
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep_long
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_button
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rgb_setcolor
 </UL>
