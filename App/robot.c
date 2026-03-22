@@ -256,9 +256,10 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 	switch(robot -> runcase){
 		case STOP:{
 			handle_and_speed(0,0);
+			set_brake(&motor, 1,1);
 			if(SW3 || robot -> run)
 			{
-			
+				set_brake(&motor, 0,0);
 				robot -> runcase = NORMAL_TRACE;
 				robot -> running = 1;
 			}	
@@ -304,8 +305,10 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 		
   	case NORMAL_TRACE:{           //case 11: CHAY BINH THUONG	
 				if(d_check_crossline()){robot -> runcase = CROSS_LINE_ONE;     break;}
+				//if(d_check_crossline()){robot -> runcase = STOP;;break;}
   			if(d_check_leftline()) {robot -> runcase = LEFT_HALF_LANE_ONE; break;}
 				if(d_check_rightline()){robot -> runcase = RIGHT_HALF_LANE_ONE;break;}
+				//if(d_check_rightline()){robot -> runcase = STOP;;break;}
 				rgb_setcolor(&rgb, PURPLE);
 			  switch(sensor_mask(get_sensor_mask(&line_sensor), MASK4_4)){
 					case 0x08://0000 1000
@@ -334,7 +337,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0x0c:{//0000 1100 
 						if (robot -> sensor_pos < -3)
 						{
-							handle_and_speed(1, 0.75 * robot -> robot_hspeed);
+							handle_and_speed(0, 0.75 * robot -> robot_hspeed);
 							break;
 						}
 						handle_and_speed(1, 0.9 * robot -> robot_hspeed);
@@ -373,7 +376,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{							
 							handle_brake2(robot, -1, 0.7 * robot -> robot_hspeed);
 						}
-							handle_and_speed(-3, 0.75 * robot -> robot_hspeed);
+							handle_and_speed(-2, 0.75 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = 4; 
 							robot -> straight_line_flag = 0;
@@ -392,7 +395,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{	
 							handle_brake2(robot,-2,0.5 * robot -> robot_hspeed);
 						}
-							handle_and_speed(-4, 0.68 * robot -> robot_hspeed);
+							handle_and_speed(-2, 0.68 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = 5; 
 							robot -> straight_line_flag = 0;
@@ -410,7 +413,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{
 						 handle_brake2(robot,-2, 0.5 * robot -> robot_hspeed);
 						}
-							handle_and_speed(-5, 0.65 * robot -> robot_hspeed);
+							handle_and_speed(-3, 0.65 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = 6; 
 							robot -> straight_line_flag = 0;
@@ -428,7 +431,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{
 						 handle_brake2(robot,-2, 0.5 * robot -> robot_hspeed);
 						}
-							handle_and_speed(-5,  0.65 * robot -> robot_hspeed);
+							handle_and_speed(-3,  0.65 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = 6; 
 							robot -> straight_line_flag = 0;
@@ -438,14 +441,15 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
  					case 0x00:{//0000 0000										
 						if (robot -> sensor_pos < -4)
 						{
-							handle_and_speed(15, 0 * robot -> robot_hspeed);												
+							handle_and_speed(15, 0.1 * robot -> robot_hspeed);												
 							break;
 						}
 						else if (robot -> sensor_pos > 4)
 						{
-							handle_and_speed(-15, 0 * robot -> robot_hspeed);
+							handle_and_speed(-15, 0.1 * robot -> robot_hspeed);
 							break;
 						}
+						handle_and_speed(RIGHT_CHANGE_LANE_ANGLE, CHANGE_LANE_FACTOR * robot -> robot_hspeed);
 						break;
 					}
 								
@@ -457,7 +461,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 							handle_and_speed(0, 0.8 * robot -> robot_hspeed);
 							break;
 						}
-						handle_and_speed(1, 0.9 * robot -> robot_hspeed);
+						handle_and_speed(0, 0.9 * robot -> robot_hspeed);
 						robot -> curve_flag = 0;
 						robot -> sensor_pos = -1;
 						robot -> straight_line_flag = 1;
@@ -468,10 +472,10 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(1, 0.75 * robot -> robot_hspeed);
+							handle_and_speed(0, 0.75 * robot -> robot_hspeed);
 							break;
 						}
-						handle_and_speed(0, 0.85 * robot -> robot_hspeed);
+						handle_and_speed(1, 0.85 * robot -> robot_hspeed);
 						robot -> curve_flag = 0;
 						robot -> sensor_pos = -2;
 						robot -> straight_line_flag = 1;
@@ -519,14 +523,14 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0xe0:{//1110 0000					
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(1, 0.7 * robot -> robot_hspeed);
+							handle_and_speed(2, 0.7 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
 						{
 							handle_brake2(robot, 1, 0.5 * robot -> robot_hspeed);
 						}
-							handle_and_speed(3, 0.68 * robot -> robot_hspeed);
+							handle_and_speed(2, 0.68 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = -5; 
 							robot -> straight_line_flag = 0;
@@ -543,7 +547,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{
 						 handle_brake2(robot, 2, 0.5 * robot -> robot_hspeed);		
 						}
-						handle_and_speed(5, 0.65 * robot -> robot_hspeed);
+						handle_and_speed(3, 0.65 * robot -> robot_hspeed);
 						robot -> curve_flag = 1;
 						robot -> sensor_pos = -6; 
 						robot -> straight_line_flag = 0;
@@ -560,7 +564,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{					
 							handle_brake2(robot, 2, 0.5 * robot -> robot_hspeed);		
 						}
-							handle_and_speed(5, 0.65 * robot -> robot_hspeed);
+							handle_and_speed(4, 0.65 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = -6; 
 							robot -> straight_line_flag = 0;
@@ -572,15 +576,15 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 			break;
 		}		
 		case CROSS_LINE_ONE:{         //case 21: DUONG CHEO	
-			//set_brake(&motor, 1,1);
-			//set_speed(&motor, 0,0);	
+			handle_and_speed(0,0);
+			set_brake(&motor, 1,1);
 			robot -> runcase = CROSS_LINE_TWO;	
 			robot -> cnt1 = 0;
 			break;
 		}
 		
  		case CROSS_LINE_TWO:{         //case 22: doi 5ms
-				while(robot -> cnt1 < 100)
+				while(robot -> cnt1 < 30)
 				{
 					set_speed(&motor, 0,0);
 					set_brake(&motor, 1,1);
@@ -610,7 +614,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0x0c:{//0000 1100 
 						if (robot -> sensor_pos < -3)
 						{
-							handle_and_speed(-1, 0 * robot -> robot_hspeed);
+							handle_and_speed(0, 0 * robot -> robot_hspeed);
 							break;
 						}
 						handle_and_speed(-1, 0 * robot -> robot_hspeed);
@@ -642,14 +646,14 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
  					
 						if (robot -> sensor_pos < -3)
 						{
-							handle_and_speed(-2, 0 * robot -> robot_hspeed);
+							handle_and_speed(-1, 0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
 						{							
 							handle_brake2(robot, -2, 0 * robot -> robot_hspeed);
 						}
-							handle_and_speed(-2,0 * robot -> robot_hspeed);
+							handle_and_speed(-1,0 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = 4; 
 							robot -> straight_line_flag = 0;
@@ -661,7 +665,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					
 						if (robot -> sensor_pos < -3)
 						{
-							handle_and_speed(-2,0 * robot -> robot_hspeed);
+							handle_and_speed(-1,0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
@@ -679,7 +683,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					
 						if (robot -> sensor_pos < -3)
 						{
-							handle_and_speed(-3,0 * robot -> robot_hspeed);
+							handle_and_speed(-2,0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
@@ -704,7 +708,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{
 						 handle_brake2(robot,-3, 0 * robot -> robot_hspeed);
 						}
-							handle_and_speed(-3,  0 * robot -> robot_hspeed);
+							handle_and_speed(-4,  0 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = 6; 
 							robot -> straight_line_flag = 0;
@@ -733,7 +737,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 							handle_and_speed(0, 0 * robot -> robot_hspeed);
 							break;
 						}
-						handle_and_speed(0, 0 * robot -> robot_hspeed);
+						handle_and_speed(1, 0 * robot -> robot_hspeed);
 						robot -> curve_flag = 0;
 						robot -> sensor_pos = -1;
 						robot -> straight_line_flag = 1;
@@ -744,7 +748,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(1, 0 * robot -> robot_hspeed);
+							handle_and_speed(0, 0 * robot -> robot_hspeed);
 							break;
 						}
 						handle_and_speed(1, 0 * robot -> robot_hspeed);
@@ -758,7 +762,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0x70:{//0111 0000 			
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(1, 0 * robot -> robot_hspeed);
+							handle_and_speed(0, 0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
@@ -775,7 +779,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0x60:{//0110 0000					
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(2, 0 * robot -> robot_hspeed);
+							handle_and_speed(1, 0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
@@ -793,7 +797,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0xe0:{//1110 0000					
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(2, 0 * robot -> robot_hspeed);
+							handle_and_speed(1, 0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
@@ -810,7 +814,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 					case 0xc0:{//1100 0000										
 						if (robot -> sensor_pos > 3)
 						{
-							handle_and_speed(3, 0 * robot -> robot_hspeed);
+							handle_and_speed(2, 0 * robot -> robot_hspeed);
 							break;
 						}
 						else if( robot -> brake_time  > robot -> min_brake_time)
@@ -835,7 +839,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 							handle_brake2(robot, 3, 0 * robot -> robot_hspeed);		
 						}
 
-							handle_and_speed(3, 0 * robot -> robot_hspeed);
+							handle_and_speed(4, 0 * robot -> robot_hspeed);
 							robot -> curve_flag = 1;
 							robot -> sensor_pos = -6; 
 							robot -> straight_line_flag = 0;
@@ -845,21 +849,21 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						break;			
 				}			
 				}
-				if (robot -> cnt1 >= 100 && robot -> cnt1 <= 130)
+				if (robot -> cnt1 >= 30 && robot -> cnt1 <= 50)
 				{
-					set_speed(&motor, -20,-20);
+					//set_speed(&motor, -20,-20);
 				}
-				else if (robot -> cnt1 > 130)
+				else if (robot -> cnt1 > 50)
 				{
 					//handle(&servo,-10);
+					//set_brake(&motor, 0,0);
+					//set_speed(&motor, 30,30);
 					set_brake(&motor, 0,0);
-					set_speed(&motor, 20,20);
+					handle_and_speed(0, 0.6 * robot -> robot_hspeed);
 					if(d_check_crossline() == 0)
 					{
 						if(d_check_leftline()== 0 && d_check_rightline() ==0)
 						{
-							set_brake(&motor, 0,0);
-							//handle_and_speed(0, 0 * robot -> robot_hspeed);
 							robot -> runcase = TRACE_AFTER_CROSS_LINE;
 							robot -> cnt1 = 0;
 							break;
@@ -878,8 +882,7 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 				|| sensor_mask(mask, 0xe0) == 0xe0  //1110 0000
 			  ){			
 					//robot -> runcase = PREPARE_TO_TURN_LEFT;
-						handle(&servo, 18);
-						set_brake(&motor, 0,0);
+						handle(&servo, 15);
 						set_speed(&motor, 0, 55);
 						robot -> cnt1 = 0;	
 						robot -> runcase  = TURN_LEFT_90;	
@@ -891,12 +894,11 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 				 ||sensor_mask(mask, 0x1f) == 0x1f //0001 1111
 				 ||sensor_mask(mask, 0x3f) == 0x3f //0011 1111
 			  ){
-					handle(&servo, -18 );
-					set_brake(&motor, 0,0);
+					//robot -> runcase = PREPARE_TO_TURN_RIGHT;
+					handle(&servo, -15 );
 					set_speed(&motor, 55 , 0);
 					robot -> cnt1  = 0;
 					robot -> runcase  = TURN_RIGHT_90;
-				//robot -> runcase = PREPARE_TO_TURN_RIGHT;
 				break;
 			}
 		  // Type 1 when approaching the strainght line before turning.		
@@ -1201,6 +1203,8 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 		
  		case RIGHT_HALF_LANE_ONE:{    //case 51: chuyen lan phai		
 			// type 1 : Change without brake
+			handle_and_speed(0,0);
+			set_brake(&motor, 1,1);
 			robot -> runcase  = RIGHT_HALF_LANE_TWO;
 			// Type 2: Change with brake
 //			set_brake(&motor, 1, 1);
@@ -1867,6 +1871,8 @@ bool d_check_rightline(){
 		 ||sensor_mask(mask, 0x2f) == 0x2f //0010 1111
 		 ||sensor_mask(mask, 0x37) == 0x37 //0011 0111
 		 ||sensor_mask(mask, 0x3b) == 0x3b //0011 1011
+		 ||sensor_mask(mask, 0x07) == 0x07 //0000 0111
+		 ||sensor_mask(mask, 0x1a) == 0x1a //0001 1010
 		)
 		{		
 			rgb_setcolor(&rgb, GREEN);
@@ -1877,8 +1883,11 @@ bool d_check_rightline(){
 }
 bool d_check_leftline(){
 	if(d_check_crossline() == false) {
-	if(sensor_mask(get_sensor_mask(&line_sensor), 0xf8) == 0xf8		//11111000
-	 ||sensor_mask(get_sensor_mask(&line_sensor), 0xf0) == 0xf0		//11110000
+	if(sensor_mask(get_sensor_mask(&line_sensor), 0xf8) == 0xf8		//1111 1000
+	 ||sensor_mask(get_sensor_mask(&line_sensor), 0xf0) == 0xf0		//1111 0000
+	 //||sensor_mask(get_sensor_mask(&line_sensor), 0xe0) == 0xe0		//1110 0000
+	 //||sensor_mask(get_sensor_mask(&line_sensor), 0xc0) == 0xc0		//1100 0000
+   ||sensor_mask(get_sensor_mask(&line_sensor), 0xfc) == 0xfc		//1111 1100	
 	)
 	{
 		rgb_setcolor(&rgb, BLUE);
