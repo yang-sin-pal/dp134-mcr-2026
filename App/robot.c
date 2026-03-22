@@ -448,8 +448,11 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 						{
 							handle_and_speed(-15, 0.1 * robot -> robot_hspeed);
 							break;
+						} else 
+						{
+							handle_and_speed(RIGHT_CHANGE_LANE_ANGLE, CHANGE_LANE_FACTOR * robot -> robot_hspeed);
+							robot -> runcase  = STABLIZE_RIGHT;
 						}
-						handle_and_speed(RIGHT_CHANGE_LANE_ANGLE, CHANGE_LANE_FACTOR * robot -> robot_hspeed);
 						break;
 					}
 								
@@ -1505,7 +1508,9 @@ void robot_high_speed(Robot *robot){ // cac truong hop cua xe
 		case STABLIZE_RIGHT:{         //ON DINH VAO LANE PHAI
 			uint8_t mask = get_sensor_mask(&line_sensor);
 			if(sensor_mask(mask, 0x07) != 0
-				||sensor_mask(mask, MASK0_4) != 0 )
+				||sensor_mask(mask, MASK0_4) != 0
+				||sensor_mask(mask, 0x03) != 0
+			)
 			{
 				handle_and_speed(0, 0.5*robot -> robot_hspeed);
 				robot -> runcase  = END_CHANGE_RIGHT_LANE;
