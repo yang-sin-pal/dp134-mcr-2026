@@ -37,7 +37,7 @@
 #define BOSST_TIME_AFTER_CHANGE_LANE 100 // ms
 #define SPEED_AFTER_CHANGE_LANE  80 
 #define SPEED_AFTER_TURN_90 80 
-uint16_t calib_weight[8] = {370,300,250,330,330,330,385,270};  // HIEU CHINH GIA TRI CHO TUNG CAM BIEN
+uint16_t calib_weight[8] = {350,300,240,330,330,330,385,260};  // HIEU CHINH GIA TRI CHO TUNG CAM BIEN
 /////----------- Differential values -------------------//////
 const char coeffR1[50] = {
 	100,	98, 	96, 	94, 	93, 	91, 	90, 	88, 	86, 	85,	

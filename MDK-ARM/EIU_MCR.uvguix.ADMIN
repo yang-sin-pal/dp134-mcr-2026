@@ -3606,27 +3606,27 @@
       <ActiveTab>1</ActiveTab>
       <Doc>
         <Name>..\App\params.h</Name>
-        <ColumnNumber>26</ColumnNumber>
-        <TopLine>14</TopLine>
-        <CurrentLine>22</CurrentLine>
+        <ColumnNumber>25</ColumnNumber>
+        <TopLine>7</TopLine>
+        <CurrentLine>18</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>..\App\robot.c</Name>
-        <ColumnNumber>49</ColumnNumber>
-        <TopLine>197</TopLine>
-        <CurrentLine>454</CurrentLine>
+        <ColumnNumber>29</ColumnNumber>
+        <TopLine>99</TopLine>
+        <CurrentLine>878</CurrentLine>
         <Folding>1</Folding>
-        <ContractedFolders>38,42,106,163,190,238,267,272,580,594,907,1127,1139,1149,1164,1177,1187,1206,1219,1538,1549,1560,1815,1829,1841,1904,1925</ContractedFolders>
+        <ContractedFolders>38,42,106,163,190,238,267,272,305,574,588,897,1117,1129,1139,1154,1167,1177,1196,1209,1219,1497,1511,1528,1539,1550,1805,1819,1831,1887,1908</ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>..\App\robot.h</Name>
         <ColumnNumber>2</ColumnNumber>
         <TopLine>75</TopLine>
-        <CurrentLine>32</CurrentLine>
+        <CurrentLine>16</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
